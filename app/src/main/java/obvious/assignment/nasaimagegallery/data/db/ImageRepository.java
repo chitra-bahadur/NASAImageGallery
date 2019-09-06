@@ -26,10 +26,6 @@ public class ImageRepository {
         mImageApi = ApiClient.getClient().create(ImageApi.class);
     }
 
-    /*public ImageRepository() {
-        mImageApi = ApiClient.getClient().create(ImageApi.class);
-    }*/
-
     public void fetchAndSaveImages(String date) {
         //final MutableLiveData<ImageDetails> newData = new MutableLiveData<>();
         mImageApi.getApodImage(date).enqueue(new Callback<ImageDetails>() {

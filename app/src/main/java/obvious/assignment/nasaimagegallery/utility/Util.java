@@ -1,10 +1,8 @@
 package obvious.assignment.nasaimagegallery.utility;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class Util {
 
@@ -14,9 +12,21 @@ public class Util {
         return sdf.format(new Date());
     }
 
-    public String[] getOldDates(int dateGapFromCurrent) {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_YEAR, dateGapFromCurrent);
+    public String[] getDateListForFetching(String dateTillDataFetched) {
+        String[] dateArr = new String[10];
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(sdf.parse(dateTillDataFetched));
+            cal.add(Calendar.DAY_OF_YEAR, -10);
+            for(int i = 0; i < 10; i++) {
+                cal.add(Calendar.DAY_OF_YEAR, i + 1);
+                dateArr[i] = sdf.format(cal.getTime());
+            }
+            return dateArr;
+        } catch (Exception ae) {
+            ae.printStackTrace();
+            return null;
+        }
 
     }
 }

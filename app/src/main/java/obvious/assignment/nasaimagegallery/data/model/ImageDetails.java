@@ -1,9 +1,16 @@
 package obvious.assignment.nasaimagegallery.data.model;
 
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.bumptech.glide.Glide;
+
+import obvious.assignment.nasaimagegallery.data.viewmodel.ImageViewModel;
 
 @Entity(tableName = "image_details")
 public class ImageDetails {
@@ -63,5 +70,12 @@ public class ImageDetails {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @BindingAdapter("android:src")
+    public static void loadImage(ImageView view, String imageUrl) {
+        Glide.with(view.getContext())
+                .load(imageUrl)
+                .into(view);
     }
 }

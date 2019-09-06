@@ -2,6 +2,7 @@ package obvious.assignment.nasaimagegallery.data.viewmodel;
 
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -43,15 +44,37 @@ public class ImageViewModel extends AndroidViewModel {
         return mUtil.getDate();
     }
 
-    //fetched image for current date
     public void fetchAndSaveImages() {
-        mRepository.fetchAndSaveImages(getCurrentDate());
-        mPrefUtil.put(CURRENT_DATE, getCurrentDate());
+        //if user first time opening the app current date will empty fetch from pref.
+        //we will fetch 10 items then save the last fetch date to pref.
+        //if user scroll for more we will fetch data from the last fetched date which we saved to next 10.
+        String dateTillFetched = mPrefUtil.getString(DATE_TILL_DATA_FETCHED);
+        if(TextUtils.isEmpty(dateTillFetched)) {
+            dateTillFetched = getCurrentDate();
+        }
+        String dateArr[] = mUtil.getDateListForFetching(dateTillFetched);
+        if(dateArr != null) {
+            for(String date : dateArr) {
+                mRepository.fetchAndSaveImages(date);
+            }
+            mPrefUtil.put(CURRENT_DATE, getCurrentDate());
+            mPrefUtil.put(DATE_TILL_DATA_FETCHED, dateArr[0]);
+        }
     }
 
-    //fetch old image
-    public void fetchAndSaveOldImages() {
-        int dateTillLastFetched = mPrefUtil.getInteger(DATE_TILL_DATA_FETCHED);
+    //fetching image for current date
+    public void fetchTodayImage() {
+        mRepository.fetchAndSaveImages(getCurrentDate());
     }
+
+    //checking weather user already opened the app and data is already present
+    //we only need to fetch current image.
+    public boolean isDataLoaded() {
+        if(getCurrentDate().equalsIgnoreCase(mPrefUtil.getString(CURRENT_DATE))) {
+            return true;
+        } else {
+            return false;
+        }
+     }
 
 }
