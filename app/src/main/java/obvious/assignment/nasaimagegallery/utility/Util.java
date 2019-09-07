@@ -19,7 +19,7 @@ public class Util {
             cal.setTime(sdf.parse(dateTillDataFetched));
             cal.add(Calendar.DAY_OF_YEAR, -10);
             for(int i = 0; i < 10; i++) {
-                cal.add(Calendar.DAY_OF_YEAR, i + 1);
+                cal.add(Calendar.DAY_OF_YEAR, 1);
                 dateArr[i] = sdf.format(cal.getTime());
             }
             return dateArr;

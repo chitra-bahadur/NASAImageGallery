@@ -2,6 +2,7 @@ package obvious.assignment.nasaimagegallery.data.db;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -26,15 +27,19 @@ public class ImageRepository {
         mImageApi = ApiClient.getClient().create(ImageApi.class);
     }
 
-    public void fetchAndSaveImages(String date) {
+    public void fetchAndSaveImages(final String date) {
         //final MutableLiveData<ImageDetails> newData = new MutableLiveData<>();
         mImageApi.getApodImage(date).enqueue(new Callback<ImageDetails>() {
             @Override
             public void onResponse(Call<ImageDetails> call, Response<ImageDetails> response) {
                 if(response.isSuccessful()) {
-                    //System.out.println(response.body());
+
                     ImageDetails details = response.body();
+                    //System.out.println(date);
+                    //System.out.println(details.getDate() + "|" + details.getUrl());
                     insert(details);
+                } else {
+                    Log.e("ImageRepository", "" + response.errorBody());
                 }
             }
 
