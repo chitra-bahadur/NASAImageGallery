@@ -16,6 +16,6 @@ public interface ImageDetailsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(ImageDetails imageDetails);
 
-    @Query("Select * from image_details order by date ASC")
+    @Query("Select * from image_details order by date DESC")
     LiveData<List<ImageDetails>> getAllImages();
 }

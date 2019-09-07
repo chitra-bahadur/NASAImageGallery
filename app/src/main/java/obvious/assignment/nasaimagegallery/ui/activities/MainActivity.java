@@ -1,6 +1,9 @@
 package obvious.assignment.nasaimagegallery.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -15,8 +18,9 @@ import obvious.assignment.nasaimagegallery.data.model.ImageDetails;
 import obvious.assignment.nasaimagegallery.data.viewmodel.ImageViewModel;
 import obvious.assignment.nasaimagegallery.databinding.ActivityMainBinding;
 import obvious.assignment.nasaimagegallery.ui.adapters.ImageListAdapter;
+import obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
     private List<ImageDetails> mImageList;
     private ImageViewModel mViewModel;
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                mImageList.addAll(imageDetails);
+                mImageList = imageDetails;
                 populateData();
             }
         });
@@ -58,7 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void populateData() {
-        ImageListAdapter adapter = new ImageListAdapter(mImageList);
+        ImageListAdapter adapter = new ImageListAdapter(mImageList, this);
         mBinding.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClicked(int pos) {
+        //Toast.makeText(this, imageDetails.getDate(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("SELECTED_ITEM", pos);
+        startActivity(intent);
     }
 }

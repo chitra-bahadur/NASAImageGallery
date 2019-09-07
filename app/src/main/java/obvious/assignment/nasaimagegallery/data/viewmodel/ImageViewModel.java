@@ -18,7 +18,7 @@ import obvious.assignment.nasaimagegallery.utility.Util;
 public class ImageViewModel extends AndroidViewModel {
 
     private ImageRepository mRepository;
-    private LiveData<List<ImageDetails>> mAllImageList;
+    public LiveData<List<ImageDetails>> mAllImageList;
     private SharePrefUtil mPrefUtil;
     private Util mUtil;
 

@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="imageDetails"
             type="obvious.assignment.nasaimagegallery.data.model.ImageDetails" />
+
+        <variable
+            name="itemClickListener"
+            type="obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener" />
+
+        <variable
+            name="position"
+            type="Integer" />
     </data>
 
+    <LinearLayout
+        android:onClick="@{()-> itemClickListener.onItemClicked(position)}"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="140dp"
-        android:id="@+id/nImageView"
-        android:layout_margin="10dp"
-        android:src="@{imageDetails.url}">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="10dp"
+            android:src="@{imageDetails.url}"
+            android:scaleType="fitXY"/>
 
-    </ImageView>
+        <!--<ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:id="@+id/nImageView"
+            android:layout_margin="10dp"
+            android:src="@{imageDetailsList.url}"
+            android:scaleType="fitXY">
+
+        </ImageView>-->
+
+        <TextView
+            android:hint="date"
+            android:layout_margin="10dp"
+            android:text="@{imageDetails.title}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 </layout>

@@ -3,6 +3,7 @@ package obvious.assignment.nasaimagegallery.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -14,13 +15,16 @@ import java.util.List;
 import obvious.assignment.nasaimagegallery.BR;
 import obvious.assignment.nasaimagegallery.R;
 import obvious.assignment.nasaimagegallery.data.model.ImageDetails;
+import obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener;
 
 public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.ImageListViewHolder> {
 
     List<ImageDetails> mImageDetailList;
+    RecyclerViewClickListener mOnItemClickListener;
 
-    public ImageListAdapter(List<ImageDetails> imageDetailList) {
+    public ImageListAdapter(List<ImageDetails> imageDetailList, RecyclerViewClickListener mOnItemClickListener) {
         this.mImageDetailList = imageDetailList;
+        this.mOnItemClickListener = mOnItemClickListener;
     }
 
     @NonNull
@@ -42,6 +46,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         return mImageDetailList.size();
     }
 
+
     class ImageListViewHolder extends RecyclerView.ViewHolder {
         //Binding type attribute
         ViewDataBinding binding;
@@ -52,6 +57,8 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
         public void bind(ImageDetails imageDetails) {
             binding.setVariable(BR.imageDetails, imageDetails);
+            binding.setVariable(BR.position, getAdapterPosition());
+            binding.setVariable(BR.itemClickListener, mOnItemClickListener);
             binding.executePendingBindings();
         }
     }

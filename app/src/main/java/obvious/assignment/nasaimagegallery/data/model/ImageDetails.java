@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey;
 
 import com.bumptech.glide.Glide;
 
+import obvious.assignment.nasaimagegallery.R;
 import obvious.assignment.nasaimagegallery.data.viewmodel.ImageViewModel;
 
 @Entity(tableName = "image_details")
