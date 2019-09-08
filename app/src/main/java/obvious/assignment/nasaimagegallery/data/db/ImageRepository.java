@@ -55,7 +55,7 @@ public class ImageRepository {
 
                     ImageDetails details = response.body();
                     //System.out.println(date);
-                    //System.out.println(details.getDate() + "|" + details.getUrl());
+                    System.out.println(details.getDate() + "|" + details.getUrl());
                     insert(details);
                     mPrefUtil.put(CURRENT_DATE, getCurrentDate());
                 } else {

@@ -46,6 +46,9 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         return mImageDetailList.size();
     }
 
+    public void setImageDetailList(List<ImageDetails> imageDetailList) {
+        this.mImageDetailList = imageDetailList;
+    }
 
     class ImageListViewHolder extends RecyclerView.ViewHolder {
         //Binding type attribute
