@@ -3,6 +3,7 @@ package obvious.assignment.nasaimagegallery.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
                 }
 
                 mImageList = imageDetails;
+                mBinding.progressBar.setVisibility(View.GONE);
                 populateData();
             }
         });

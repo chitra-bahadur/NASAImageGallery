@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "135510605692",
+    "firebase_url": "https://projects-c103a.firebaseio.com",
+    "project_id": "projects-c103a",
+    "storage_bucket": "projects-c103a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135510605692:android:3345804a39540d3f",
+        "android_client_info": {
+          "package_name": "android.example.com.squawker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135510605692-6cp8prtfmu83fs11en5bm4q7jadb7ojv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3GxujidiYxAAlQNeBskr9aAWkrO_apik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135510605692-6cp8prtfmu83fs11en5bm4q7jadb7ojv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135510605692:android:ecbeaa6b50319dbdc66ef9",
+        "android_client_info": {
+          "package_name": "obvious.assignment.nasaimagegallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135510605692-6cp8prtfmu83fs11en5bm4q7jadb7ojv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3GxujidiYxAAlQNeBskr9aAWkrO_apik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135510605692-6cp8prtfmu83fs11en5bm4q7jadb7ojv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
