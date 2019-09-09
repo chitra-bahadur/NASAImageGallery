@@ -8,7 +8,7 @@
 
         <variable
             name="itemClickListener"
-            type="obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener" />
+            type="obvious.assignment.nasaimagegallery.ui.listeners.RecyclerViewClickListener" />
 
         <variable
             name="position"

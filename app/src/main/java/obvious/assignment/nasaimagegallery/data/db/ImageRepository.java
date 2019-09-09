@@ -3,6 +3,7 @@ package obvious.assignment.nasaimagegallery.data.db;
 import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -44,6 +45,23 @@ public class ImageRepository {
     //fetch current date
     public String getCurrentDate() {
         return mUtil.getDate();
+    }
+
+    public void fetchAndSaveImages() {
+        //if user first time opening the app current date will empty fetch from pref.
+        //we will fetch 10 items then save the last fetch date to pref.
+        //if user scroll for more we will fetch data from the last fetched date which we saved to next 10.
+        String dateTillFetched = getDateTillDataFetched();
+        if(TextUtils.isEmpty(dateTillFetched)) {
+            dateTillFetched = getCurrentDate();
+        }
+        String dateArr[] = getDateListForFetching(dateTillFetched);
+        if(dateArr != null) {
+            for(String date : dateArr) {
+                fetchAndSaveImages(date);
+            }
+            setDateTillDataFetched(dateArr[0]);
+        }
     }
 
     public void fetchAndSaveImages(final String date) {
@@ -109,5 +127,17 @@ public class ImageRepository {
 
     public String getSavedCurrDate() {
         return mPrefUtil.getString(CURRENT_DATE);
+    }
+
+    //checking weather user already opened the app and data is already present
+    //we only need to fetch current image.
+    public boolean isDataLoaded() {
+        String currentDate = getCurrentDate();
+        String savedCurrDate = getSavedCurrDate();
+        if(currentDate.equalsIgnoreCase(savedCurrDate)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

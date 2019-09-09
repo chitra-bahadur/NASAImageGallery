@@ -2,9 +2,7 @@ package obvious.assignment.nasaimagegallery.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,15 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import obvious.assignment.nasaimagegallery.R;
 import obvious.assignment.nasaimagegallery.data.model.ImageDetails;
 import obvious.assignment.nasaimagegallery.data.viewmodel.ImageViewModel;
 import obvious.assignment.nasaimagegallery.databinding.ActivityMainBinding;
 import obvious.assignment.nasaimagegallery.ui.adapters.ImageListAdapter;
-import obvious.assignment.nasaimagegallery.utility.EndlessRecyclerViewOnScrollListener;
-import obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener;
+import obvious.assignment.nasaimagegallery.ui.listeners.RecyclerViewClickListener;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
 

@@ -1,4 +1,4 @@
-package obvious.assignment.nasaimagegallery.utility;
+package obvious.assignment.nasaimagegallery.ui.listeners;
 
 import obvious.assignment.nasaimagegallery.data.model.ImageDetails;
 

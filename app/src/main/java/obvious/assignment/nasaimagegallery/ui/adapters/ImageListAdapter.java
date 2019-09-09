@@ -1,9 +1,7 @@
 package obvious.assignment.nasaimagegallery.ui.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,7 +13,7 @@ import java.util.List;
 import obvious.assignment.nasaimagegallery.BR;
 import obvious.assignment.nasaimagegallery.R;
 import obvious.assignment.nasaimagegallery.data.model.ImageDetails;
-import obvious.assignment.nasaimagegallery.utility.RecyclerViewClickListener;
+import obvious.assignment.nasaimagegallery.ui.listeners.RecyclerViewClickListener;
 
 public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.ImageListViewHolder> {
 
